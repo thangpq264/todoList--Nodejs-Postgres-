@@ -5,7 +5,7 @@ var uuid = require('node-uuid');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Todo.findAll({order: '"updatedAt" DESC'}).then(function(results) {
+  Todo.findAll({order: '"completed" , "updatedAt" DESC'}).then(function(results) {
     res.render('index',{data : results});
   });
 });

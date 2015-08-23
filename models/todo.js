@@ -41,11 +41,11 @@ var Todo = database.define('todo2', {
         updatedAt: 'updated_at'
 })
 
-Todo.sync({force:true}).then(function () {
-    return data.forEach((function (item) {
-        var uuidItem = uuid.v4();
-        Todo.create({title:item , uuid:uuidItem});
-    }))
-});
+//Todo.sync({force:true}).then(function () {
+//    return data.forEach((function (item) {
+//        var uuidItem = uuid.v4();
+//        Todo.create({title:item , uuid:uuidItem});
+//    }))
+//});
 
 module.exports = Todo;
