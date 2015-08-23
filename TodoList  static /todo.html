@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<title>Todo List</title>
+
+<script>
+
+var i = 0;
+
+function createItemList(newItem) {
+	
+}
+
+function addNewTask () {
+	var newItem = $('#newTask').val();
+	if (newItem != "") {
+		$('#newTask').val("");
+		i++;
+		var newLi = "<li id=li"+i+" class='list-group-item'> " + newItem + "<div class='btn-group-sm pull-right'><button class='btn btn-default' onclick= $('#li"+i+"').remove()><span class='pull-right glyphicon glyphicon-remove'></span></button></div></li>";
+		$('#listWork').append(newLi);
+	};
+}
+
+</script>
+
+<style type="text/css">
+	ul {
+    	border-width: 1px;
+	}
+</style>
+
+</head>
+
+
+<body>
+<div class="container">
+	<div class="row">
+		<h1>Todo List </h1>
+	</div>
+	<div class="row">
+		<div class="form-group form-inline">
+			<input id="newTask" type="next" class="form-control" placeHolder="Nhập công việc" style="width:92%;">
+			<button id="addNew" class='btn btn-default' onclick="addNewTask()">Thêm mới</button>
+		</div>
+	</div>
+	<div class="row">
+		<ul id='listWork' class='list-group'>
+			<div class="btn-group-sm pull-right">
+
+			</div>
+		<ul>
+	</div>	
+</div>
+</body>
+
+</html>
+
