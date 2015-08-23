@@ -1,6 +1,8 @@
 var Sequelize = require('sequelize');
 var database = new Sequelize('postgres://Help-14:@localhost:5432/thangpq');
+var uuid = require('node-uuid');
 var data = require('./demo.js').data;
+
 var Todo = database.define('todo', {
     id : {
         type : Sequelize.INTEGER,
@@ -11,7 +13,14 @@ var Todo = database.define('todo', {
         type : Sequelize.STRING,
         allowNull : false,
         validate : {
-            notEmpty: true
+            notEmpty : true
+        }
+    },
+    uuid : {
+        type : Sequelize.STRING,
+        allowNull : false,
+        validate : {
+            notEmpty : true
         }
     },
     completed : {
@@ -20,11 +29,11 @@ var Todo = database.define('todo', {
     }
 }, {freezeTableName : true})
 
-Todo.sync({force : true}).then(function () {
-    console.log(data);
-    return data.forEach((function (item) {
-        Todo.create({title:item});
-    }))
-});
+//Todo.sync().then(function () {
+//    return data.forEach((function (item) {
+//        var uuidItem = uuid.v4();
+//        Todo.create({title:item , uuid:uuidItem});
+//    }))
+//});
 
 module.exports = Todo;

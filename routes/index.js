@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Todo = require('../models/todo.js');
+var uuid = require('node-uuid');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,11 +12,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function (req,res) {
   var newTodo = req.body.todo;
-  //if (newTodo = "") {
-  //  return res.redirect('/');
-  //}
-
-  Todo.create({title : newTodo}).then(function () {
+  var uuidItem = uuid.v4();
+  console.log(uuidItem);
+  Todo.create({title : newTodo, uuid : uuidItem}).then(function () {
     res.redirect('/');
   }).catch(function (error) {
         res.redirect('/');
@@ -24,7 +23,7 @@ router.post('/', function (req,res) {
 
 router.get('/done/:id', function (req,res) {
   Todo.update({completed : true}, {where :{
-    id : req.params.id
+    uuid : req.params.id
   }}).then(function() {
     res.redirect('/');
   })
@@ -33,7 +32,7 @@ router.get('/done/:id', function (req,res) {
 router.get('/delete/:id', function (req,res) {
   Todo.destroy({
     where : {
-      id : req.params.id
+      uuid : req.params.id
     }
   }).then(function () {
     res.redirect('/');

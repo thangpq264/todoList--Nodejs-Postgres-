@@ -20,15 +20,15 @@
                     <li class="list-group-item list-group-item-success">
                         {{ item.title }}
                         <div class="btn-group-sm pull-right">
-                            <a class="btn btn-default" href="/delete/{{ item.id }}"><span class="pull-right glyphicon glyphicon-remove"></span></a>
+                            <a class="btn btn-default" href="/delete/{{ item.uuid }}"><span class="pull-right glyphicon glyphicon-remove"></span></a>
                         </div>
                     </li>
                     {% else %}
                     <li class="list-group-item">
                         {{item.title}}
                         <div class="btn-group-sm pull-right">
-                            <a class="btn btn-default" href="/done/{{ item.id }}"><span class="pull-right glyphicon glyphicon-ok"></span></a>
-                            <a class="btn btn-default" href="/delete/{{ item.id }}"><span class="pull-right glyphicon glyphicon-remove"></span></a>
+                            <a class="btn btn-default" href="/done/{{ item.uuid }}"><span class="pull-right glyphicon glyphicon-ok"></span></a>
+                            <a class="btn btn-default" href="/delete/{{ item.uuid }}"><span class="pull-right glyphicon glyphicon-remove"></span></a>
                         </div>
                     </li>
                     {% endif %}
